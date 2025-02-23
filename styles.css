@@ -200,7 +200,7 @@ nav ul li a:hover {
 /* Hộp chat */
 #chat-box {
     width: 300px;
-    height: 400px;
+    height: 200px;
     position: fixed;
     bottom: 20px;
     right: 20px;

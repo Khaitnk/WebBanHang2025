@@ -170,6 +170,21 @@ function sendMessage() {
     }
 }
 
+// ẩn chat
+document.addEventListener("DOMContentLoaded", function() {
+    const chatBox = document.getElementById("chatBox");
+    const toggleChat = document.getElementById("toggleChat");
+    const closeChat = document.getElementById("closeChat");
+  
+    toggleChat.addEventListener("click", function() {
+      chatBox.style.display = chatBox.style.display === "none" ? "block" : "none";
+    });
+  
+    closeChat.addEventListener("click", function() {
+      chatBox.style.display = "none";
+    });
+  });
+
 // Đảm bảo chat-box luôn hiển thị trên tất cả các phần tử khác
 const chatBox = document.getElementById("chat-box");
 if (chatBox) {

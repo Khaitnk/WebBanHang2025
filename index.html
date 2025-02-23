@@ -1,0 +1,190 @@
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trái Cây Miền Trung</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Chào mừng đến với <span>Trái Cây Miền Trung</span></h1>
+            <p>Cung cấp trái cây tươi ngon, đặc sản vùng miền.</p>
+            <button id="view-products-btn">Xem sản phẩm</button>
+        </div>
+    </header>
+
+    <!-- Tìm Kiếm -->
+
+    <input type="text" id="search-box" placeholder="Bạn cần tìm gì..." onkeyup="searchProducts()">
+    
+    <!-- Các Nút Bấm -->
+
+    <nav>
+        <ul>
+            <li><a href="#home" onclick="showHome()">Trang Chủ</a></li>
+            <li><a href="#products" onclick="showProducts()">Sản Phẩm</a></li>
+            <li><a href="#contact" onclick="showContact()">Liên Hệ</a></li>
+            <li><a href="#" id="login-link" onclick="showLogin()">Đăng nhập</a></li>
+            <li><a href="#" id="register-link" onclick="showRegister()">Đăng ký</a></li>
+            <li><a href="#" id="logout-link" onclick="logout()" style="display: none;">Đăng xuất</a></li>
+        </ul>
+    </nav>
+
+    <!-- Giao diện của admin -->
+
+    <div id="admin-panel" style="display: none;">
+        <h2>Admin Dashboard</h2>
+        <p>Chào mừng Admin! Bạn có thể quản lý sản phẩm tại đây.</p>
+        <button class="admin-view-products-btn" onclick="showProducts()">Xem Sản Phẩm</button>
+    </div>
+    
+
+
+
+<!---->
+
+<section id="home">
+    <div class="home-container">
+        <h2>Chào mừng đến với cửa hàng Trái Cây Miền Trung</h2>
+        <p>Chúng tôi cung cấp các loại trái cây tươi ngon đặc sản của miền Trung.</p>
+        <img src="hoaqua.jpg" alt="Trái cây miền Trung" style="width: 20%;">
+    </div>
+</section>
+
+<!---->
+
+    <section id="products" style="display: none;">
+        <div class="container" id="fruit-list">
+            <!-- Trái cây sẽ được thêm ở đây bằng JavaScript khi bấm vào Sản Phẩm -->
+        </div>
+    </section>
+
+        <!-- Liên Hệ -->
+        <section id="contact">
+            <div class="container">
+                <h2>Liên Hệ</h2>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>0399159318</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-facebook"></i>
+                        <a href="https://www.facebook.com/khaivo1108" target="_blank">Trung Khải</a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Họ và Tên" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="phone" placeholder="Số Điện Thoại" required>
+                    <textarea placeholder="Nội dung liên hệ" required></textarea>
+                    <button type="submit">Gửi Tin Nhắn</button>
+                </form>
+            </div>
+        </section>
+        
+
+    <!-- đăng nhập và đăng kí-->
+
+    <section id="login-form" class="auth-form" style="display: none;">
+        <h2>Đăng Nhập</h2>
+        <form onsubmit="login(event)">
+            <input type="text" id="login-username" placeholder="Tên đăng nhập" required>
+            <input type="password" id="login-password" placeholder="Mật khẩu" required>
+            <button type="submit">Đăng Nhập</button>
+        </form>
+    </section>
+    
+    <section id="register-form" class="auth-form" style="display: none;">
+        <h2>Đăng Ký</h2>
+        <form onsubmit="register(event)">
+            <input type="text" id="register-username" placeholder="Tên đăng nhập" required>
+            <input type="password" id="register-password" placeholder="Mật khẩu" required>
+            <button type="submit">Đăng Ký</button>
+        </form>
+    </section>
+    
+    <!-- Chat Support-->
+    <!-- Nút mở chat -->
+<div id="chat-button" onclick="toggleChat()">
+    💬 Chat với hỗ trợ
+</div>
+
+<!-- Hộp chat -->
+<div id="chat-box" class="hidden">
+    <div class="chat-header">
+        <span>Hỗ trợ khách hàng</span>
+        <button onclick="toggleChat()">✖</button>
+    </div>
+    <div class="chat-body">
+        <div id="chat-messages"></div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="chat-input" placeholder="Nhập tin nhắn..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">Gửi</button>
+    </div>
+</div> <!-- Kết thúc chat-box -->
+
+
+<!-- Footer đặt bên ngoài -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Tổng đài hỗ trợ miễn phí</h3>
+            <p>📞 Gọi mua hàng: <strong>1800.2097</strong> (7h30 - 22h00)</p>
+            <p>📞 Gọi khiếu nại: <strong>1800.2063</strong> (8h00 - 21h30)</p>
+            <p>📞 Gọi bảo hành: <strong>1800.2064</strong> (8h00 - 21h00)</p>
+
+            <h3>Gmail</h3>
+            <p>📧 traicaymientrung@gmail.com </p>
+
+            <h3>Phương thức thanh toán</h3>
+            <div class="payment-methods">
+                <img src="vnpay-logo.webp" alt="VNPay">
+                <img src="momo_1.webp" alt="Momo">
+                <img src="onepay-logo.webp" alt="OnePay">
+                <img src="zalopay-logo.webp" alt="ZaloPay">
+                <img src="kredivo-logo.webp" alt="Kredivo">
+                <img src="alepay-logo.webp" alt="Ale Pay">
+                <img src="fundiin.webp" alt="Fundin">
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3>Thông tin và chính sách</h3>
+            <ul>
+                <li><a href="#">Mua hàng và thanh toán Online</a></li>
+                <li><a href="#">Chính sách giao hàng</a></li>
+                <li><a href="#">Tra điểm Thành Viên Vip</a></li>
+                <li><a href="#">Xem ưu đãi Thành Viên Vip</a></li>
+                <li><a href="#">Tra thông tin bảo hành</a></li>
+                <li><a href="#">Tra cứu hóa đơn</a></li>
+                <li><a href="#">Thông tin hóa đơn mua hàng</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Dịch vụ và thông tin khác</h3>
+            <ul>
+                <li><a href="#">Khách hàng doanh nghiệp (B2B)</a></li>
+                <li><a href="#">Ưu đãi thanh toán</a></li>
+                <li><a href="#">Quy chế hoạt động</a></li>
+                <li><a href="#">Chính sách bảo mật thông tin cá nhân</a></li>
+                <li><a href="#">Chính sách bảo hành</a></li>
+                <li><a href="#">Liên hệ hợp tác kinh doanh</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">Dịch vụ bảo hành mở rộng</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>    
+</div>
+</body>
+</html>

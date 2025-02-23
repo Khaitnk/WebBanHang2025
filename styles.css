@@ -210,6 +210,7 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     overflow: hidden; /* Ngăn chặn nội dung bị tràn ra ngoài */
+    display: none;
 }
 
 /* Tiêu đề chat */
